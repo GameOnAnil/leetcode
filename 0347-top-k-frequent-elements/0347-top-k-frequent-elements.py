@@ -6,9 +6,5 @@ class Solution:
                 o[nums[i]]+=1
             else:
                 o[nums[i]]=1
-        va = o.values()
-        vlist = list(va)
-        vlist.sort(reverse=True)
-        vlist = vlist[:k]
-        keys = [k for k, v in o.items() if v in vlist]
-        return keys
+        kthItems =sorted(o, key=o.get, reverse=True)[:k]
+        return kthItems
