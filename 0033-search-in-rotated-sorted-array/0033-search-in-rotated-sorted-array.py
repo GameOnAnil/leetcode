@@ -5,8 +5,12 @@ class Solution:
         l, r = 0, len(nums) - 1
         while l <= r:
             mid = (l + r) // 2
+            if target == nums[l]:
+                return l
             if target == nums[mid]:
                 return mid
+            if target == nums[r]:
+                return r
             if nums[l] <= nums[mid]:
                 if target > nums[mid] or target < nums[l]:
                     l = mid + 1
