@@ -11,6 +11,7 @@ class TimeMap:
     def get(self, key: str, timestamp: int) -> str:
         result = ""
         values = self.di.get(key,[])
+        if not values: return result
         l, r = 0, len(values)-1
         while l<=r:
             mid = (l+r)//2
