@@ -7,7 +7,7 @@ class Solution:
                 break
             mid = (l + r) // 2
             result = min(result,nums[mid])
-            if nums[mid] > nums[l] and nums[mid] > nums[r]:
+            if nums[mid] >= nums[l]:
                 l = mid + 1
             else:
                 r = mid - 1
