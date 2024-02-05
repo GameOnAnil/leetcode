@@ -1,15 +1,10 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        seen = set()
-        for i , v in enumerate(s):
-            if v in seen:
-                continue
-            hasMatch = False
-            seen.add(v)
-            for j in range(i + 1, len(s)):
-                if s[j] == v:
-                    hasMatch = True
-            if not hasMatch:
-                return i
+        di = defaultdict(int)
+        for i in s:
+            di[i]+=1
+        for j in range(len(s)):
+            if di[s[j]] == 1:
+                return j
         return -1
 
