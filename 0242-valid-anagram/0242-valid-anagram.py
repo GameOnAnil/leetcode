@@ -1,7 +1,12 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        sl,tl = list(s),list(t)
-        sl.sort()
-        tl.sort()
-        return sl == tl
-        
+        d = defaultdict(int)
+        if len(s)!=len(t):
+            return False
+        for i in range(len(s)):
+            d[s[i]] += 1
+            d[t[i]] -= 1
+        for i in d.values():
+            if i != 0:
+                return False
+        return True
