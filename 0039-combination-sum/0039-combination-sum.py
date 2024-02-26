@@ -6,9 +6,7 @@ class Solution:
                 return
             if i >= len(candidates) or total > target:
                 return
-            sub.append(candidates[i])
-            dfs(i, sub, total + candidates[i])
-            sub.pop()
+            dfs(i, sub + [candidates[i]], total + candidates[i])
             dfs(i + 1, sub, total)
 
         res = []
