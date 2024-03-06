@@ -12,10 +12,11 @@ class Solution:
         while l2:
             sum2=str(l2.val)+ sum2
             l2 = l2.next
-        total = str(int(sum1)+int(sum2))
-        prev_node = None
+        total = str(int(sum1) + int(sum2))
+        tail = None
         for i in total:
-            node = ListNode(int(i))
-            node.next = prev_node
-            prev_node = node
-        return prev_node
+            curr = ListNode(int(i))
+            curr.next = tail
+            tail = curr
+        return tail
+        
