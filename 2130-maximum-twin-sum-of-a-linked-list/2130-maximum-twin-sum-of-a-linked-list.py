@@ -19,7 +19,7 @@ class Solution:
             curr.next = prev
             prev = curr
         res = 0
-        while prev.next:
+        while prev:
             res = max(res, prev.val + dummy.val)
             dummy = dummy.next
             prev = prev.next
