@@ -4,7 +4,7 @@ class Solution:
         for i in range(len(tickets)):
             dq.append(i)
         res = 0
-        while (len(tickets) - 1) >= k and tickets[k] > 0:
+        while tickets[k] > 0:
             index = dq.popleft()
             if tickets[index] > 0:
                 tickets[index]=tickets[index]-1
