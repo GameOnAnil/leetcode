@@ -1,14 +1,21 @@
 class Solution:
     def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
-        n = len(deck)
+        if len(deck) == 1:
+            return deck
         deck.sort()
-        dq = deque()
-        res = [None] * len(deck)
-        for i in range(len(deck)):
+        n = len(deck)
+        dq = collections.deque()
+        res = [None]* n
+        for i in range(n):
             dq.append(i)
-        for i in range(len(deck)):
-            res[dq.popleft()] = deck[i]
+        for d in deck:
+            index = dq.popleft()
+            res[index] = d
             if dq:
                 dq.append(dq.popleft())
         return res
+
+
+        
+
         
