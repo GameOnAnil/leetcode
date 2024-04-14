@@ -8,14 +8,14 @@ class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
-        res = [0]
-        def dfs(node,isLeft:bool,res):
+
+        def dfs(node, isLeft: bool):
             if not node:
-                return
+                return 0
             if isLeft and not node.left and not node.right:
-                res[0]+=node.val
-                return
-            dfs(node.left,True,res)
-            dfs(node.right,False,res)
-        dfs(root,False,res)
-        return res[0]
+                return node.val
+            left = dfs(node.left, True)
+            right = dfs(node.right, False)
+            return left + right
+
+        return dfs(root, False)
