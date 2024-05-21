@@ -1,14 +1,12 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res = []
-        self.dfs(0,nums,[],res)
-        return res
-    def dfs(self,i,nums,path,res):
-        print(path)
-        if i == len(nums):
-            res.append(path)
-            return
-        self.dfs(i+1,nums,path+[nums[i]],res)
-        self.dfs(i+1,nums,path,res)
-
         
+        def dfs(index, curr):
+            res.append(curr)
+            for i in range(index,len(nums)):
+                dfs(i + 1,curr + [nums[i]])
+
+
+        dfs(0, [])
+        return res
