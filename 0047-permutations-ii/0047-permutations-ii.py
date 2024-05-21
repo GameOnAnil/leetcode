@@ -8,10 +8,9 @@ class Solution:
                 res.append(path[::])
                 return
             for k, v in counter.items():
-                if v > 0:
-                    counter[k]-=1
-                    dfs(path + [k])
-                    counter[k]+=1
+                counter[k]-=1
+                dfs(path + [k])
+                counter[k]+=1
         dfs([])
         return res
         
