@@ -2,23 +2,24 @@ class Solution:
     def partition(self, s: str) -> List[List[str]]:
         res = []
         path = []
-
-        def dfs(i):
-            if i >= len(s):
+        def helper(index,path):
+            if index == len(s):
                 res.append(path[::])
                 return
-            for j in range(i, len(s)):
-                if self.isPalindrome(s, i, j):
-                    path.append(s[i : j + 1])
-                    dfs(j + 1)
+            for i in range(index,len(s)):
+                print("index",index,i,"s:",s[index:i+1])
+                if self.isPalindrome(s,index,i):
+                    path.append(s[index:i+1])
+                    helper(i + 1,path)
                     path.pop()
-
-        dfs(0)
+        helper(0,[])      
         return res
 
-    def isPalindrome(self,s, l, r):
-        while l < r:
-            if s[l] != s[r]:
-                return False
-            l, r = l + 1, r - 1
+    def isPalindrome(self, s, start, end):
+        while start <= end: # iterate through the substring
+            if s[start] != s[end]: # check if current characters are not equal
+                return False # if they are not, return false
+            start += 1
+            end -= 1
         return True
+        
