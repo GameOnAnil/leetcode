@@ -7,18 +7,18 @@ class Solution:
 
         def findPivot(num):
             l,r = 0, P-1 
+            currbest = P
             while l<=r:
                 mid = (l+r)//2
-                if potions[mid]*num == success:
-                    return mid
-                elif potions[mid]*num < success:
+                if potions[mid] < num:
                     l = mid + 1                  
                 else:
-                    r = mid - 1
-            return l
+                    currbest = mid
+                    r = mid - 1  
+            return currbest
 
         for i, s in enumerate(spells):
-            pivot = findPivot(s)
+            pivot = findPivot((success + s - 1) // s)
             res[i] = P - pivot
         return res
 
