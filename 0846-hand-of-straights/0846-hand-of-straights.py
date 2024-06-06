@@ -1,20 +1,16 @@
 class Solution:
     def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
-        if len(hand) % groupSize:
+        if len(hand) % groupSize != 0:
             return False
-        count = defaultdict(int)
-        for i in hand:
-            count[i] += 1
-        minHeap = list(count.keys())
-        heapq.heapify(minHeap)
-        while minHeap:
-            first = minHeap[0]
-            for i in range(first, first + groupSize):
-                if i not in count:
+        count = Counter(hand)
+        print(count)
+        for i in sorted(count.keys()):
+            if count[i] <=0:
+                continue
+            for j in range(groupSize)[::-1]:
+                index = i + j
+                # print(i,index)
+                count[index]-=count[i]
+                if count[index] < 0:
                     return False
-                count[i] -= 1
-                if count[i] == 0:
-                    if i != minHeap[0]:
-                        return False
-                    heapq.heappop(minHeap)
         return True
