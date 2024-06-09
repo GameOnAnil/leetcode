@@ -1,6 +1,14 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        a = b = 1
-        for _ in range(n):
-            a, b = b, a + b
-        return a
+        @cache
+        def solve(i):
+            if i == 0 or i == 1:
+                return 1
+            return solve(i-1) + solve(i-2)
+
+        return solve(n)
+
+
+        
+
+        
