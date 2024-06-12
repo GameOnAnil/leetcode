@@ -3,14 +3,18 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        bucket = [0]*3
-        for n in nums:
-            bucket[n]+=1
-        index = 0
-        for i,v in enumerate(bucket):
-            for _ in range(v):
-                nums[index] =i
-                index+=1
+        low, mid, high = 0, 0, len(nums) - 1
+        while mid <=high:
+            if nums[mid] == 0:
+                nums[low], nums[mid] = nums[mid], nums[low]
+                low+=1
+                mid+=1
+            elif nums[mid] == 2:
+                nums[high], nums[mid] = nums[mid], nums[high]
+                high-=1
+            else:
+                mid+=1
+
 
 
         
