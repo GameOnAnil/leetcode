@@ -2,7 +2,7 @@ class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         N = len(nums)
         if N == 1:
-            return nums
+            return 1
         l = 0
         r = 0
         count = 0
