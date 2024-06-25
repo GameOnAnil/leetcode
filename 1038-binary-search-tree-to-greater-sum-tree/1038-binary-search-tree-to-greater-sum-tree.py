@@ -1,17 +1,23 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def bstToGst(self, root):
-        node_sum = [0]  # Using a list to emulate a mutable integer reference
-        self.bst_to_gst_helper(root, node_sum)
+    def bstToGst(self, root: TreeNode) -> TreeNode:
+        curr_sum = [0]
+        def dfs(node):
+            if not node:
+                return
+            dfs(node.right)
+            curr_sum[0]+=node.val
+            node.val = curr_sum[0]
+            dfs(node.left)
+        
+        dfs(root)
         return root
 
-    def bst_to_gst_helper(self, root, node_sum):
-        # If root is null, make no changes.
-        if root is None:
-            return
 
-        self.bst_to_gst_helper(root.right, node_sum)
-        node_sum[0] += root.val
-        # Update the value of root.
-        root.val = node_sum[0]
-        self.bst_to_gst_helper(root.left, node_sum)
+
         
