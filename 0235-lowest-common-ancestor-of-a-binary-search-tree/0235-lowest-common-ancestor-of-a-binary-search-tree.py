@@ -5,15 +5,15 @@
 #         self.left = None
 #         self.right = None
 
-
 class Solution:
-    def lowestCommonAncestor(
-        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
-    ) -> "TreeNode":
-        while root:
-            if p.val > root.val and q.val > root.val:
-                root = root.right
-            elif p.val < root.val and q.val < root.val:
-                root = root.left
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        temp = root
+        while True:
+            if temp.val < q.val and temp.val < p.val:
+                temp = temp.right
+            elif temp.val > q.val and temp.val > p.val:
+                temp = temp.left
             else:
-                return root
+                return temp
+            
+        
