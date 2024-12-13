@@ -1,10 +1,7 @@
 class Solution:
-    def twoSum(self, nums: list[int], target: int) -> list[int]:
-        print(nums)
-        m = defaultdict(int)
-        for i, v in enumerate(nums):
-            if (target - v) in m:
-                return [i, m.get(target - v)]
-            else:
-                m[v] = i
-        return []
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if (nums[i] + nums[j]) == target:
+                    return (i, j)
+        return (0, 0)
